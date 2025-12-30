@@ -36,7 +36,7 @@ export function Hero() {
           text-muted-foreground hover:text-emerald-400
           transition-colors animate-bounce">
 
-            <FaArrowCircleDown size={30} />
+            <FaArrowCircleDown className="w-4 h-4 sm:w-5 sm:h-5 lg:w-12 lg:h-12" />
           </a>
         </div>
       </section>

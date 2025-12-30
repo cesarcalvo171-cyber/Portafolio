@@ -28,7 +28,7 @@ export function Contacto() {
              
             </div>
             <div className=" grid md:grid-cols-1 gap-2 mt-5">
-               <WhatsAppLink /> 
+               <WhatsAppLink className="h-10"/> 
 
             </div>
           </div>
