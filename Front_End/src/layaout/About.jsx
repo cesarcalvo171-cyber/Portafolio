@@ -13,18 +13,15 @@ export function About() {
           <div className="grid md:grid-cols-3 gap-12">
             <div className="md:col-span-2 space-y-4">
               <p className="text-muted-foreground leading-relaxed">
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci 
-               quisquam voluptatibus fugit magni sequi corrupti, distinctio id, dolore 
-               officiis molestias eos aperiam modi, quae quos animi totam. Omnis, tenetur numquam?
-              </p>
+             Soy egresado de la carrera de Ingeniería en Sistemas con énfasis en frontend y me apasiona transformar ideas en experiencias web claras y usables.
+              Disfruto trabajar con HTML, CSS y JavaScript,React, Tailwinds, Bootstrap cuidando tanto los detalles visuales como la forma en que las personas interactúan con cada interfaz.</p>
+             
               <p className="text-muted-foreground leading-relaxed">
-                  officiis molestias eos aperiam modi, quae quos animi totam. Omnis, tenetur numquam?{" "}
-                <span className="text-emerald-400"> quos animi totam. Omnis, tenetur numquam?</span>,   officiis molestias eos aperiam modi, quae quos animi totam. Omnis, tenetur numquam?
-                 officiis molestias eos aperiam modi, quae quos animi totam. Omnis, tenetur numquam?e.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                 officiis molestias eos aperiam modi, quae quos animi totam. Omnis, tenetur numquam?
-                   officiis molestias eos aperiam modi, quae quos animi totam. Omnis, tenetur numquam?
+               Actualmente estoy realizando mis prácticas profesionales en la Universidad Padre Gaspar García Laviana, dentro del área de sistemas financieros. 
+               Esta experiencia me ha permitido enfrentar problemas reales, aprender a trabajar en equipo y entender cómo la tecnología puede mejorar procesos internos. 
+               Me considero una persona curiosa, responsable y en constante aprendizaje, con la meta de seguir creciendo como desarrollador frontend.
+
+
               </p>
             </div>
 

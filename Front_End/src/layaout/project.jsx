@@ -17,7 +17,7 @@ const projects = [
   {
     title: "Sistema de Reporte de Egresos",
     description:
-      "-Plataforma para Area Contable de la Universidad Nacional Padre Gaspar Garcia Laviana - Permite registrar y gestionar egresos, generar reportes financieros y mantener un historial detallado de transacciones.-",
+      "-Plataforma para Area Contable de la Universidad Nacional Padre Gaspar Garcia Laviana - Permite registrar y gestionar egresos, generar reportes financieros y mantener un historial detallado de transacciones. Actualmete se encuentra en uso por la institucion-",
     image:Registro,
     technologies: ["React", "yup", "React Bootstrap", " Formik"],
    
@@ -35,7 +35,7 @@ const projects = [
   {
      title: "Sistema de Gestion de Cheque ",
     description: 
-      "Plataforma para Area Contable de la Universidad Nacional Padre Gaspar Garcia Laviana- Permite Registrar los Documentos Necesarios Para los Procesos  de Cheque que se Realizan en lal Institucion.",
+      "Plataforma para Area Contable de la Universidad Nacional Padre Gaspar Garcia Laviana- Permite Registrar los Documentos Necesarios Para los Procesos  de Cheque que se Realizan en la Institucion Segun el tipo de Cheque Realizar.",
     image: Proceso_Cheque,
     technologies: ["React", "yup", "React Bootstrap", " Formik"],
   

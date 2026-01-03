@@ -17,8 +17,9 @@ export function Hero() {
              Jr. Frontend Developer
             </h2>
             <p className="text-muted-foreground text-lg md:text-xl max-w-xl leading-relaxed mb-8">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia nulla inventore repellendus corrupti dolores, 
-              ex vero illo qui, culpa recusandae distinctio architecto debitis excepturi ad quos consectetur quidem veniam molestiae!
+              Soy César Mauricio Calvo Díaz, desarrollador frontend egresado de Ingeniería en Sistemas. 
+              Trabajo con HTML, CSS y JavaScript para crear interfaces web funcionales y agradables.
+               Actualmente realizo mis prácticas en la Universidad Padre Gaspar García Laviana, en el área de sistemas financieros, donde apoyo en el desarrollo de herramientas tecnológicas para la gestión administrativa.
             </p>
 
             <div className="flex flex-wrap gap-4">

@@ -11,6 +11,7 @@ import {
 import { LuGithub } from "react-icons/lu";
 import { CgMail } from "react-icons/cg";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
+import WhatsAppLink from "../components/WhatsappLink";
 
 export function NavBar() {
   const [open, setOpen] = useState(false);
@@ -71,14 +72,15 @@ export function NavBar() {
 
         {/* ICONOS + HAMBURGUESA */}
         <div className="flex items-center gap-3 mr-4 sm:mr-6">
-          <LuGithub
+          <WhatsAppLink  />
+          <a href="mailto:cesarcalvo171@gmail.com">
+             <CgMail
             size={24}
             className="text-emerald-400 hover:text-emerald-300 transition-colors cursor-pointer"
           />
-          <CgMail
-            size={24}
-            className="text-emerald-400 hover:text-emerald-300 transition-colors cursor-pointer"
-          />
+
+          </a>
+         
 
           {/* Botón hamburguesa: solo en móvil/tablet */}
           <button

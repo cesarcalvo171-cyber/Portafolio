@@ -28,7 +28,7 @@ export function Contacto() {
              
             </div>
             <div className=" grid md:grid-cols-1 gap-2 mt-5">
-               <WhatsAppLink className="h-10"/> 
+               <WhatsAppLink className="h-10"/> <p className=" text-emerald-400 hover:text-emerald-100">  Hablar por WhatsApp </p> 
 
             </div>
           </div>
