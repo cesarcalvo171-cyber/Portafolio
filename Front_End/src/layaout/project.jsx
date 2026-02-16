@@ -12,6 +12,8 @@ import { Button } from "../components/ui/button"
 import Registro from "../assets/Registro_Egreso.png"
 import Reporte_Kardex from "../assets/Reporte_Kardex.png"
 import Proceso_Cheque from "../assets/Porceso_Cheque.png"
+import queja from "../assets/queja.png"
+import culminacion from "../assets/culminacion.png"
 
 const projects = [
   {
@@ -42,6 +44,27 @@ const projects = [
     featured: true,
    
   },
+  {
+     title: "sistema de quejas y denuncias ",
+    description: 
+      "Plataforma de quejas y consultas (sin finalizar) , este proyecto se divide en un sistema publico y uno privado , con el objetivo de que el usuario encargado de revisar las quejas, resepcione y envie las quejas a las areas denunciadas.",
+    image: queja,
+    technologies: ["React", "yup", "shadcdn","laravel"],
+  
+    featured: true,
+   
+  },
+  {
+     title: "Sistema de Gestion de Cheque ",
+    description: 
+      "Diseño forntend de steper para la elaboracion de cuilminacion de estudio",
+    image: culminacion,
+    technologies: ["React", "React Bootstrap"],
+  
+    featured: true,
+   
+  },
+  
   
 ]
 
