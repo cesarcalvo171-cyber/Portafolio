@@ -1,144 +1,96 @@
-"use client";
-
-import { useState } from "react";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { LuGithub } from "react-icons/lu";
+import { useState, useEffect } from "react";
 import { CgMail } from "react-icons/cg";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import WhatsAppLink from "../components/WhatsappLink";
 
+const navLinks = [
+  { href: "#About",        label: "Sobre mí",    num: "01" },
+  { href: "#Herramientas", label: "Habilidades",  num: "02" },
+  { href: "#projects",     label: "Proyectos",    num: "03" },
+  { href: "#Contacto",     label: "Contacto",     num: "04" },
+];
+
 export function NavBar() {
-  const [open, setOpen] = useState(false);
+  const [open,     setOpen]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="w-full bg-slate-950 py-4 border-b-2 border-green-400 shadow-sm sm:px-6 lg:px-8 fixed top-0 z-50">
-      {/* BARRA SUPERIOR */}
-      <div className="mx-auto flex justify-between items-center">
-        {/* Logo */}
-        <h1 className="text-2xl sm:text-3xl font-bold text-emerald-400 ml-4 sm:ml-6">
-          {"< DEV />"}
-        </h1>
+    <nav
+      className={`w-full fixed top-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "glass-card border-b border-white/8 shadow-xl shadow-black/30 py-3"
+          : "bg-transparent py-5"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
 
-        {/* MENU DESKTOP */}
-        <Breadcrumb className="hidden lg:block">
-          <BreadcrumbList className="flex items-center gap-6 text-lg text-emerald-400">
-            <BreadcrumbItem>
-              <BreadcrumbLink
-                href="#About"
-                className="text-emerald-400 hover:text-emerald-100 transition-colors"
-              >
-                Sobre mí
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-green-600" />
+        {/* ── Logo ── */}
+        <a
+          href="#"
+          className="text-xl font-bold gradient-text"
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+        >
+          &lt; DEV /&gt;
+        </a>
 
-            <BreadcrumbItem>
-              <BreadcrumbLink
-                href="#Herramientas"
-                className="text-emerald-400 hover:text-emerald-100 transition-colors"
-              >
-                Herramientas
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-green-600" />
+        {/* ── Desktop links ── */}
+        <div className="hidden lg:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="relative text-slate-400 hover:text-white transition-colors duration-300 text-sm font-medium group"
+            >
+              <span className="text-cyan-400 font-mono text-xs mr-1">{link.num}.</span>
+              {link.label}
+              {/* animated underline */}
+              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-cyan-400 to-violet-500 group-hover:w-full transition-all duration-300" />
+            </a>
+          ))}
+        </div>
 
-            <BreadcrumbItem>
-              <BreadcrumbLink
-                href="#projects"
-                className="text-emerald-400 hover:text-emerald-100 transition-colors"
-              >
-                Proyectos
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator className="text-green-600" />
-
-            <BreadcrumbItem>
-              <BreadcrumbLink
-                href="#Contacto"
-                className="text-emerald-400 hover:text-emerald-100 transition-colors"
-              >
-                Contacto
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-green-600" />
-          </BreadcrumbList>
-        </Breadcrumb>
-
-        {/* ICONOS + HAMBURGUESA */}
-        <div className="flex items-center gap-3 mr-4 sm:mr-6">
-          <WhatsAppLink  />
-          <a href="mailto:cesarcalvo171@gmail.com">
-             <CgMail
-            size={24}
-            className="text-emerald-400 hover:text-emerald-300 transition-colors cursor-pointer"
-          />
-
+        {/* ── Icons + hamburger ── */}
+        <div className="flex items-center gap-4">
+          <WhatsAppLink />
+          <a href="mailto:cesarcalvo171@gmail.com" title="Enviar correo">
+            <CgMail
+              size={22}
+              className="text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer"
+            />
           </a>
-         
 
-          {/* Botón hamburguesa: solo en móvil/tablet */}
           <button
-            className="lg:hidden text-emerald-400 hover:text-emerald-200 transition-colors"
-            onClick={() => setOpen((prev) => !prev)}
+            className="lg:hidden text-slate-400 hover:text-white transition-colors"
+            onClick={() => setOpen((p) => !p)}
             aria-label="Abrir menú"
           >
-            {open ? <RxCross2 size={26} /> : <RxHamburgerMenu size={26} />}
+            {open ? <RxCross2 size={24} /> : <RxHamburgerMenu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* MENU MOBILE: */}
+      {/* ── Mobile menu ── */}
       {open && (
-        <div className="lg:hidden  px-4 pb-4">
-          <Breadcrumb>
-            <BreadcrumbList className="flex flex-col gap-3 text-base text-emerald-400">
-              <BreadcrumbItem>
-                <BreadcrumbLink
-                  href="#About"
-                  className="block w-full py-1 hover:text-emerald-100 transition-colors "
-                  onClick={() => setOpen(false)}
-                >
-                  Sobre mí
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-
-              <BreadcrumbItem>
-                <BreadcrumbLink
-                  href="#Herramientas"
-                  className="block w-full py-1 hover:text-emerald-100 transition-colors"
-                  onClick={() => setOpen(false)}
-                >
-                  Herramientas
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-
-              <BreadcrumbItem>
-                <BreadcrumbLink
-                  href="#projects"
-                  className="block w-full py-1 hover:text-emerald-100 transition-colors"
-                  onClick={() => setOpen(false)}
-                >
-                  Proyectos
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-
-              <BreadcrumbItem>
-                <BreadcrumbLink
-                  href="#Contacto"
-                  className="block w-full py-1 hover:text-emerald-100 transition-colors"
-                  onClick={() => setOpen(false)}
-                >
-                  Contacto
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+        <div className="lg:hidden glass-card border-t border-white/8 px-6 py-5 mt-1">
+          <div className="flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors py-3 border-b border-white/5 last:border-0"
+              >
+                <span className="text-cyan-400 font-mono text-xs w-6">{link.num}.</span>
+                <span className="text-sm font-medium">{link.label}</span>
+              </a>
+            ))}
+          </div>
         </div>
       )}
     </nav>

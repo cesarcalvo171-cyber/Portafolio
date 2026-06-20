@@ -1,143 +1,224 @@
 import { useState } from "react";
-import { FaReact } from "react-icons/fa";
+import { FaReact, FaBootstrap, FaGithub, FaHtml5, FaCss3Alt, FaWordpress, FaDocker } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { FaGithub } from "react-icons/fa";
 import { IoLogoFigma } from "react-icons/io5";
-import { FaBootstrap } from "react-icons/fa";
-const SkillCategories = [
+import { SiVite, SiSupabase } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
+
+/* Text-based icon badge for tools without an SVG logo */
+const TextBadge = ({ text, color }) => (
+  <span
+    style={{
+      color,
+      fontWeight: 700,
+      fontSize: "13px",
+      fontFamily: "'Space Grotesk', sans-serif",
+      letterSpacing: "0.03em",
+    }}
+  >
+    {text}
+  </span>
+);
+
+const categories = [
   {
     name: "Frontend",
     skills: [
-      { name: "React", level: 90 },
-      { name: "JavaScript", level: 70 },
-      { name: "HTML/CSS", level: 90 },
-      { name: "Tailwind CSS", level: 80 },
-      { name: "Bootsrap", level: 90 },
-      { name: "React Bootstrap", level: 90 },
-      { name: "Shadcn/ui", level: 50 },
+      { name: "React",          level: 90 },
+      { name: "JavaScript",     level: 70 },
+      { name: "HTML / CSS",     level: 90 },
+      { name: "Tailwind CSS",   level: 80 },
+      { name: "Bootstrap",      level: 90 },
+      { name: "React Bootstrap",level: 90 },
+      { name: "Shadcn/ui",      level: 50 },
     ],
   },
   {
     name: "Herramientas",
     skills: [
-      { name: "Github", level: 70 },
-      { name: "VS Code", level: 90 },
-      { name: "Figma", level: 50 },
-      { name: "npm/yarn", level: 70 },
-      { name: "Vite", level: 70 },
-      { name: "Yup", level: 70 },
-      { name: "Formik", level: 70 },
-    ],
-  },
-  {
-    name: "Otros",
-    skills: [
-      { name: "Node.js", level: 50 },
-      { name: "REST APIs", level: 70 },
-      { name: "PostgreSQL", level: 50 },
-      { name: "Mysql", level: 70 },
-      { name: "MysqLite", level: 70 },
+      { name: "GitHub",     level: 70 },
+      { name: "VS Code",    level: 90 },
+      { name: "Figma",      level: 50 },
+      { name: "npm/yarn",   level: 70 },
+      { name: "Vite",       level: 70 },
+      { name: "Formik",     level: 70 },
+      { name: "Yup",        level: 70 },
+      { name: "WordPress",   level: 75 },
+      { name: "Antigravity", level: 75 },
+      { name: "n8n",         level: 50},
+      { name: "Docker",      level: 50 },
+      { name: "Supabase",    level:50 },
     ],
   },
 ];
+
+const techIcons = [
+  { name: "React",      icon: <FaReact />,          color: "#61dafb" },
+  { name: "JavaScript", icon: <IoLogoJavascript />,  color: "#f7df1e" },
+  { name: "HTML5",      icon: <FaHtml5 />,           color: "#e34c26" },
+  { name: "CSS3",       icon: <FaCss3Alt />,          color: "#264de4" },
+  { name: "Tailwind",   icon: <RiTailwindCssFill />,  color: "#38bdf8" },
+  { name: "Bootstrap",  icon: <FaBootstrap />,        color: "#7952b3" },
+  { name: "Vite",       icon: <SiVite />,             color: "#646cff" },
+  { name: "GitHub",     icon: <FaGithub />,           color: "#e2e8f0" },
+  { name: "Figma",      icon: <IoLogoFigma />,        color: "#f24e1e" },
+  { name: "WordPress",   icon: <FaWordpress />,                                   color: "#21759b" },
+  { name: "VS Code",     icon: <VscVscode />,                                     color: "#007acc" },
+  { name: "Docker",      icon: <FaDocker />,                                      color: "#2496ed" },
+  { name: "n8n",         icon: <TextBadge text="n8n" color="#ea4b71" />,          color: "#ea4b71" },
+  { name: "Antigravity", icon: <TextBadge text="AG"  color="#8b5cf6" />,          color: "#8b5cf6" },
+  { name: "Supabase",    icon: <SiSupabase />,                                    color: "#3ecf8e" },
+];
+
+
 export function Tool() {
-  const [selectedCategory, setSelectedCategory] = useState(0);
+  const [selected, setSelected] = useState(0);
+
   return (
-    <>
-      <section id="Herramientas" className=" py-24 px-6 bg-slate-800 ">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-4 mb-12">
-            <span className="text-emerald-400 font-mono">02.</span>
-            <h2 className=" text-white text-2xl md:text-3xl font-bold ">
-              Herramientas y Habilidades
-            </h2>
-            <div className="h-px bg-border flex-1 max-w-xs" />
+    <section
+      id="Herramientas"
+      className="py-28 px-6"
+      style={{ background: "#050816" }}
+    >
+      <div className="max-w-6xl mx-auto">
+
+        {/* ── Section header ── */}
+        <div className="flex items-center gap-4 mb-16">
+          <span className="text-cyan-400 font-mono text-sm">02.</span>
+          <h2
+            className="text-white text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Habilidades
+          </h2>
+          <div
+            className="h-px flex-1 max-w-xs"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(6,182,212,0.5), transparent)",
+            }}
+          />
+        </div>
+
+        {/* ── Tabs + bars ── */}
+        <div className="grid md:grid-cols-4 gap-6 mb-16">
+          {/* Category tabs */}
+          <div className="flex md:flex-col gap-2">
+            {categories.map((cat, i) => (
+              <button
+                key={cat.name}
+                onClick={() => setSelected(i)}
+                className="px-5 py-3 text-left text-sm font-medium rounded-xl transition-all duration-300 border w-full"
+                style={
+                  selected === i
+                    ? {
+                        color: "#06b6d4",
+                        background: "rgba(6,182,212,0.08)",
+                        borderColor: "rgba(6,182,212,0.4)",
+                        boxShadow: "0 0 18px rgba(6,182,212,0.12)",
+                      }
+                    : {
+                        color: "#64748b",
+                        background: "transparent",
+                        borderColor: "rgba(255,255,255,0.06)",
+                      }
+                }
+                onMouseEnter={(e) => {
+                  if (selected !== i) {
+                    e.currentTarget.style.color = "#e2e8f0";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+                    e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (selected !== i) {
+                    e.currentTarget.style.color = "#64748b";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
+                    e.currentTarget.style.background = "transparent";
+                  }
+                }}
+              >
+                {cat.name}
+              </button>
+            ))}
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-4 md:pb-0">
-              {SkillCategories.map((category, index) => (
-                <button
-                  key={category.name}
-                  onClick={() => setSelectedCategory(index)}
-                  className={`px-4 py-3 text-left text-sm font-medium whitespace-nowrap transition-all border-b-2 md:border-b-0 md:border-l-2 ${
-                    selectedCategory === index
-                      ? "text-emerald-400 border-primary bg-white"
-                      : "text-muted-foreground border-transparent hover:text-emerald-400 hover:bg-white"
-                  }`}
-                >
-                  {category.name}
-                </button>
+          {/* Skill bars */}
+          <div
+            className="md:col-span-3 rounded-2xl p-8 glass-card"
+            style={{ border: "1px solid rgba(255,255,255,0.07)" }}
+          >
+            <div className="grid sm:grid-cols-2 gap-6">
+              {categories[selected].skills.map((skill) => (
+                <div key={skill.name} className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-200 font-medium text-sm">
+                      {skill.name}
+                    </span>
+                    <span className="text-cyan-400 font-mono text-xs">
+                      {skill.level}%
+                    </span>
+                  </div>
+                  <div
+                    className="h-1.5 rounded-full overflow-hidden"
+                    style={{ background: "rgba(255,255,255,0.06)" }}
+                  >
+                    <div
+                      className="h-full rounded-full transition-all duration-700"
+                      style={{
+                        width: `${skill.level}%`,
+                        background:
+                          "linear-gradient(90deg, #06b6d4 0%, #8b5cf6 100%)",
+                        boxShadow: "0 0 8px rgba(6,182,212,0.4)",
+                      }}
+                    />
+                  </div>
+                </div>
               ))}
             </div>
-            <div className="md:col-span-3">
-              <div className="grid sm:grid-cols-2 gap-6 ">
-                {SkillCategories[selectedCategory].skills.map((skill) => (
-                  <div key={skill.name} className="space-y-2 ">
-                    <div className="flex justify-between items-center">
-                      <span className="text-white font-medium">
-                        {skill.name}
-                      </span>
-                      <span className="text-white font-mono text-sm">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="h-2 bg-black rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-emerald-400 rounded-full transition-all duration-500"
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
-          <div className="mt-16 grid grid-cols-3 md:grid-cols-6 gap-8">
-            {[
-              {
-                name: "React",
-                icon: <FaReact size={30} className="text-blue-400" />,
-              },
-              {
-                name: "JavaScript",
-                icon: (
-                  <IoLogoJavascript size={30} className="text-yellow-400" />
-                ),
-              },
-              {
-                name: "Tailwind",
-                icon: <RiTailwindCssFill size={30} className="text-blue-400" />,
-              },
-              {
-                name: "Github",
-                icon: <FaGithub size={30} className="text-white" />,
-              },
-              {
-                name: "Figma",
-                icon: <IoLogoFigma size={30} className="text-red-700" />,
-              },
-              {
-                name: "Bootsrap",
-                icon: <FaBootstrap size={30} className="text-blue-700" />,
-              },
-            ].map((tech) => (
+        </div>
+
+        {/* ── Tech icon grid ── */}
+        <div>
+          <p className="text-slate-600 text-xs font-mono uppercase tracking-widest mb-8 text-center">
+            Stack tecnológico
+          </p>
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-12 gap-3">
+            {techIcons.map((tech) => (
               <div
                 key={tech.name}
-                className="flex flex-col items-center gap-2 p-4 rounded-lg bg-gray-800 hover:bg-white transition-colors group hover:text-white"
+                className="glass-card flex flex-col items-center gap-2 p-3 md:p-4 rounded-xl transition-all duration-300 group cursor-default"
+                style={{ border: "1px solid rgba(255,255,255,0.05)" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = `${tech.color}40`;
+                  e.currentTarget.style.background = `${tech.color}08`;
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.05)";
+                  e.currentTarget.style.background = "";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
               >
-                <span className="text-2xl group-hover:scale-110 transition-transform">
+                <span
+                  className="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300"
+                  style={{
+                    color: tech.color,
+                    filter: `drop-shadow(0 0 6px ${tech.color}60)`,
+                  }}
+                >
                   {tech.icon}
                 </span>
-                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                <span className="text-slate-500 text-[10px] text-center group-hover:text-slate-200 transition-colors leading-tight">
                   {tech.name}
                 </span>
               </div>
             ))}
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

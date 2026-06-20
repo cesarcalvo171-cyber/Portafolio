@@ -1,123 +1,297 @@
-// src/components/Projects.jsx
-import React from "react"
-import { ExternalLink, Github, ArrowRight } from "lucide-react"
-import { LuGithub } from "react-icons/lu";
-import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { FaWordpress } from "react-icons/fa";
+import Registro      from "../assets/Registro_Egreso.png";
+import Reporte_Kardex from "../assets/Reporte_Kardex.png";
+import Proceso_Cheque from "../assets/Porceso_Cheque.png";
+import queja          from "../assets/queja.png";
+import step           from "../assets/step.png";
+import Wordpress      from "../assets/Wordpress.png";
+import jobitx         from "../assets/jobitx.png";
+import sharm           from "../assets/sharm.png";
+/* ─── Data ──────────────────────────────────────────────── */
 
-
-// Si NO tienes estos componentes, reemplázalos o créalos.
-// Por ahora asumo que existen en src/components/ui
-import { Badge } from "../components/ui/badge"
-import { Button } from "../components/ui/button"
-import Registro from "../assets/Registro_Egreso.png"
-import Reporte_Kardex from "../assets/Reporte_Kardex.png"
-import Proceso_Cheque from "../assets/Porceso_Cheque.png"
-
-const projects = [
+const practiceProjects = [
   {
     title: "Sistema de Reporte de Egresos",
     description:
-      "-Plataforma para Area Contable de la Universidad Nacional Padre Gaspar Garcia Laviana - Permite registrar y gestionar egresos, generar reportes financieros y mantener un historial detallado de transacciones. Actualmete se encuentra en uso por la institucion-",
-    image:Registro,
-    technologies: ["React", "yup", "React Bootstrap", " Formik"],
-   
-    featured: true,
+      "Plataforma para registrar y gestionar egresos, generar reportes financieros y mantener historial de transacciones. En uso activo.",
+    image: Registro,
+    technologies: ["React", "Formik", "Yup", "React Bootstrap"],
+    status: "En producción",
+    statusColor: "#06b6d4",
   },
   {
     title: "Reporte Kardex",
-    description: 
-      "Plataforma para Area Contable de la Universidad Nacional Padre Gaspar Garcia Laviana- Permite Tener Reportes de Producto de Entrada y de Salida, el cual permite tener un registro Segun el Movimiento.",
+    description:
+      "Gestión de reportes de productos de entrada y salida con registros detallados por movimiento de inventario.",
     image: Reporte_Kardex,
-    technologies: ["React", "yup", "React Bootstrap", " Formik"],
-  
-    featured: true,
+    technologies: ["React", "Formik", "Yup", "React Bootstrap"],
+    status: "En producción",
+    statusColor: "#06b6d4",
   },
   {
-     title: "Sistema de Gestion de Cheque ",
-    description: 
-      "Plataforma para Area Contable de la Universidad Nacional Padre Gaspar Garcia Laviana- Permite Registrar los Documentos Necesarios Para los Procesos  de Cheque que se Realizan en la Institucion Segun el tipo de Cheque Realizar.",
+    title: "Sistema de Gestión de Cheques",
+    description:
+      "Registro de documentos para procesos de cheque clasificados según el tipo de trámite a realizar.",
     image: Proceso_Cheque,
-    technologies: ["React", "yup", "React Bootstrap", " Formik"],
-  
-    featured: true,
-   
+    technologies: ["React", "Formik", "Yup", "React Bootstrap"],
+    status: "En producción",
+    statusColor: "#06b6d4",
+  },
+  {
+    title: "Formulario Multi-Paso",
+    description:
+      "Rediseño de formulario con flujo guiado por pasos (step-by-step) para mejorar la experiencia del usuario.",
+    image: step,
+    technologies: ["React", "React Bootstrap"],
+    status: "Completado",
+    statusColor: "#8b5cf6",
+  },
+];
+
+const featuredProjects = [
+  {
+    title: "Landing Page — Jobitx",
+    description:
+      "Landing page corporativa moderna, responsiva con trancisiones suaves y con formulario de contacto integrado.",
+    image: jobitx,
+    technologies: ["React", "Tailwind CSS", "Formik", "Yup"],
+    status: "Completado",
+    statusColor: "#8b5cf6",
+  },
+  {
+    title: "Landing Page — Sharm 3000 platform ",
+    description:
+      "Landing page corporativa moderna, responsiva con trancisiones suaves y   con formulario de contacto integrado.",
+    image: sharm,
+    technologies: ["React", "Tailwind CSS", "Formik", "Yup"],
+    status: "Completado",
+    statusColor: "#8b5cf6",
+  },
+];
+
+const wordpressProjects = [
+  {
+    title: "Sitio Web Branding Personal",
+    description:
+      "Desarrollo de sitio web Personal con WordPress, tema personalizado , plugins Personalizados y optimización SEO básica.",
+    technologies: ["WordPress", "CSS", "Kadence Theme" ],
+    status: "Completado",
+    statusColor: "#21759b",
+     image: Wordpress,
+    
   },
   
-]
+];
 
-export function Projects() {
-  const featuredProjects = projects.filter((p) => p.featured)
- 
+/* ─── ProjectCard ───────────────────────────────────────── */
+
+function ProjectCard({ project }) {
+  const hasImage = !!project.image;
 
   return (
-    <section id="projects" className="py-24 px-6 bg-slate-950">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-4 mb-12">
-          <span className="text-white font-mono">03.</span>
-          <h2 className="text-2xl md:text-3xl font-bold text-white">Proyectos Destacados</h2>
-          <div className="h-px bg-border flex-1 max-w-xs" />
+    <div
+      className="glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-1.5 flex flex-col"
+      style={{
+        border: "1px solid rgba(255,255,255,0.07)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = `${project.statusColor}35`;
+        e.currentTarget.style.boxShadow = `0 12px 40px ${project.statusColor}18`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)";
+        e.currentTarget.style.boxShadow = "none";
+      }}
+    >
+      {/* ── Image / placeholder ── */}
+      {hasImage ? (
+        <div className="relative overflow-hidden h-44">
+          <div
+            className="absolute inset-0 z-10 transition-opacity duration-400 group-hover:opacity-0"
+            style={{
+              background: "linear-gradient(to top, rgba(10,12,30,0.75) 0%, transparent 60%)",
+            }}
+          />
+          <div
+            className="absolute top-3 left-3 z-20 px-2.5 py-0.5 rounded-full text-[11px] font-mono"
+            style={{
+              background: `${project.statusColor}18`,
+              border: `1px solid ${project.statusColor}50`,
+              color: project.statusColor,
+            }}
+          >
+            ● {project.status}
+          </div>
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+          />
         </div>
+      ) : (
+        /* WordPress / no-image placeholder */
+        <div
+          className="relative h-36 flex items-center justify-center"
+          style={{
+            background: `linear-gradient(135deg, ${project.statusColor}18, rgba(10,12,30,0.9))`,
+            borderBottom: `1px solid ${project.statusColor}25`,
+          }}
+        >
+          <FaWordpress
+            size={52}
+            style={{ color: project.statusColor, opacity: 0.6 }}
+            className="group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+          />
+          <div
+            className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[11px] font-mono"
+            style={{
+              background: `${project.statusColor}18`,
+              border: `1px solid ${project.statusColor}50`,
+              color: project.statusColor,
+            }}
+          >
+            ● {project.status}
+             <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+          />
+          </div>
+        </div>
+      )}
 
-        <div className="space-y-24">
-          {featuredProjects.map((project, index) => (
-            <div
-              key={project.title}
-              className={` text-white grid md:grid-cols-12 gap-4 items-center ${
-                index % 2 === 1 ? "md:text-right " : ""
-              }`}
+      {/* ── Content ── */}
+      <div className="p-5 flex flex-col flex-1">
+        <h3
+          className="text-white font-bold text-base mb-2 leading-snug"
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+        >
+          {project.title}
+        </h3>
+        <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-1">
+          {project.description}
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {project.technologies.map((tech) => (
+            <span
+              key={tech}
+              className="px-2.5 py-1 text-[11px] font-mono rounded-lg transition-colors duration-200"
+              style={{
+                color: project.statusColor,
+                background: `${project.statusColor}10`,
+                border: `1px solid ${project.statusColor}28`,
+              }}
             >
-              <div
-                className={`md:col-span-7 relative group ${
-                  index % 2 === 1 ? "md:order-2" : ""
-                }`}
-              >
-                <div className="relative overflow-hidden rounded-lg">
-                  <div className="absolute inset-0 bg-white/30 group-hover:bg-transparent transition-colors z-10" />
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className= "w-full aspect-video object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-              </div>
-
-              <div
-                className={`md:col-span-5 ${
-                  index % 2 === 1 ? "md:order-1 md:pr-4" : "md:pl-4"
-                }`}
-              >
-                <p className="text-emerald-400 font-mono text-sm mb-2">Proyecto Destacado</p>
-                <h3 className=" text-white text-xl md:text-2xl font-bold text-foreground mb-4">
-                  {project.title}
-                </h3>
-                <div className="bg-slate-800 p-6 rounded-lg shadow-lg mb-4">
-                  <p className="text-white text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-                <div
-                  className={`flex flex-wrap gap-2 mb-4 ${
-                    index % 2 === 1 ? "md:justify-end" : ""
-                  }`}
-                >
-                  {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary" className=" text-white  font-mono text-xs">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                
-              </div>
-            </div>
+              {tech}
+            </span>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
 
-        
+/* ─── Section Header ────────────────────────────────────── */
 
-      
+function SectionHeader({ num, title, accentColor = "#06b6d4" }) {
+  return (
+    <div className="flex items-center gap-4 mb-10">
+      <span className="font-mono text-sm" style={{ color: accentColor }}>
+        {num}
+      </span>
+      <h3
+        className="text-white text-2xl md:text-3xl font-bold"
+        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+      >
+        {title}
+      </h3>
+      <div
+        className="h-px flex-1 max-w-xs"
+        style={{
+          background: `linear-gradient(to right, ${accentColor}60, transparent)`,
+        }}
+      />
+    </div>
+  );
+}
 
-      
+/* ─── Main Component ────────────────────────────────────── */
+
+export function Projects() {
+  return (
+    <section
+      id="projects"
+      className="py-28 px-6"
+      style={{ background: "#07091a" }}
+    >
+      <div className="max-w-6xl mx-auto">
+
+        {/* ── Main header ── */}
+        <div className="flex items-center gap-4 mb-16">
+          <span className="text-cyan-400 font-mono text-sm">03.</span>
+          <h2
+            className="text-white text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Proyectos
+          </h2>
+          <div
+            className="h-px flex-1 max-w-xs"
+            style={{
+              background: "linear-gradient(to right, rgba(6,182,212,0.5), transparent)",
+            }}
+          />
+        </div>
+
+        {/* ══════════════════════════════════════════
+            SECCIÓN 1 — Proyectos de Prácticas
+        ══════════════════════════════════════════ */}
+        <div className="mb-20">
+          <SectionHeader
+            num="03.1"
+            title="Proyectos de Prácticas"
+            accentColor="#06b6d4"
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-5">
+            {practiceProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
+        </div>
+
+        {/* ══════════════════════════════════════════
+            SECCIÓN 2 — Proyectos Destacados
+        ══════════════════════════════════════════ */}
+        <div className="mb-20">
+          <SectionHeader
+            num="03.2"
+            title="Proyectos Destacados"
+            accentColor="#8b5cf6"
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
+        </div>
+
+        {/* ══════════════════════════════════════════
+            SECCIÓN 3 — Proyectos WordPress
+        ══════════════════════════════════════════ */}
+        <div>
+          <SectionHeader
+            num="03.3"
+            title="Proyectos WordPress"
+            accentColor="#21759b"
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {wordpressProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
-  )
+  );
 }

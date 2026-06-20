@@ -5,15 +5,16 @@ import { About } from "./layaout/About";
 import { Tool } from "./layaout/Tool";
 import { Projects } from "./layaout/project";
 import { Contacto } from "./layaout/Contacto";
+
 function App() {
   return (
-    <div>
+    <div style={{ background: "#050816" }}>
       <NavBar />
       <Hero />
       <About />
       <Tool />
       <Projects />
-      <Contacto />  
+      <Contacto />
     </div>
   );
 }
