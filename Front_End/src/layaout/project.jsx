@@ -2,11 +2,11 @@ import { FaWordpress } from "react-icons/fa";
 import Registro      from "../assets/Registro_Egreso.png";
 import Reporte_Kardex from "../assets/Reporte_Kardex.png";
 import Proceso_Cheque from "../assets/Porceso_Cheque.png";
-import queja          from "../assets/queja.png";
 import step           from "../assets/step.png";
 import Wordpress      from "../assets/Wordpress.png";
 import jobitx         from "../assets/jobitx.png";
 import sharm           from "../assets/sharm.png";
+import Race         from "../assets/Race.png";
 /* ─── Data ──────────────────────────────────────────────── */
 
 const practiceProjects = [
@@ -16,8 +16,8 @@ const practiceProjects = [
       "Plataforma para registrar y gestionar egresos, generar reportes financieros y mantener historial de transacciones. En uso activo.",
     image: Registro,
     technologies: ["React", "Formik", "Yup", "React Bootstrap"],
-    status: "En producción",
-    statusColor: "#06b6d4",
+   
+    
   },
   {
     title: "Reporte Kardex",
@@ -25,8 +25,8 @@ const practiceProjects = [
       "Gestión de reportes de productos de entrada y salida con registros detallados por movimiento de inventario.",
     image: Reporte_Kardex,
     technologies: ["React", "Formik", "Yup", "React Bootstrap"],
-    status: "En producción",
-    statusColor: "#06b6d4",
+   
+    
   },
   {
     title: "Sistema de Gestión de Cheques",
@@ -34,8 +34,8 @@ const practiceProjects = [
       "Registro de documentos para procesos de cheque clasificados según el tipo de trámite a realizar.",
     image: Proceso_Cheque,
     technologies: ["React", "Formik", "Yup", "React Bootstrap"],
-    status: "En producción",
-    statusColor: "#06b6d4",
+    
+   
   },
   {
     title: "Formulario Multi-Paso",
@@ -43,8 +43,7 @@ const practiceProjects = [
       "Rediseño de formulario con flujo guiado por pasos (step-by-step) para mejorar la experiencia del usuario.",
     image: step,
     technologies: ["React", "React Bootstrap"],
-    status: "Completado",
-    statusColor: "#8b5cf6",
+ 
   },
 ];
 
@@ -55,8 +54,8 @@ const featuredProjects = [
       "Landing page corporativa moderna, responsiva con trancisiones suaves y con formulario de contacto integrado.",
     image: jobitx,
     technologies: ["React", "Tailwind CSS", "Formik", "Yup"],
-    status: "Completado",
-    statusColor: "#8b5cf6",
+
+  
   },
   {
     title: "Landing Page — Sharm 3000 platform ",
@@ -64,8 +63,16 @@ const featuredProjects = [
       "Landing page corporativa moderna, responsiva con trancisiones suaves y   con formulario de contacto integrado.",
     image: sharm,
     technologies: ["React", "Tailwind CSS", "Formik", "Yup"],
-    status: "Completado",
-    statusColor: "#8b5cf6",
+    
+   
+  },
+   {
+    title: "Race Gym ",
+    description:
+      "Site Web Personal , con diseño moderno y responsive contiene biblioteca de ejercicios, creacion de rutina y rutinas pre-definidas segun los dias de entrenamiento",
+    image: Race,
+    technologies: ["React", "Tailwind CSS", "Antigravity"],
+  
   },
 ];
 
@@ -75,8 +82,7 @@ const wordpressProjects = [
     description:
       "Desarrollo de sitio web Personal con WordPress, tema personalizado , plugins Personalizados y optimización SEO básica.",
     technologies: ["WordPress", "CSS", "Kadence Theme" ],
-    status: "Completado",
-    statusColor: "#21759b",
+   
      image: Wordpress,
     
   },
